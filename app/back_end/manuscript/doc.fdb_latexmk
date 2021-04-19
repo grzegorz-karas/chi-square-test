@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1618866211 "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.tex" "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.pdf" "doc" 1618866230
-  "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.aux" 1618866212 1491 b4fce27403565834d30e9756761cce09 ""
-  "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.tex" 1618866230 3373 a3fc7adaba7c66349db3b302b18998aa ""
+["pdflatex"] 1618866412 "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.tex" "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.pdf" "doc" 1618866413
+  "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.aux" 1618866413 1521 dfd1754037ae4952499116f37d112877 ""
+  "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.tex" 1618866411 3399 a662d00dd4178fdb067554a94dcc5820 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -75,13 +75,13 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616223827 5169178 5e26466a4cf032aa8042125d66141e2e ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1616223923 2706798 8e1097f28be5d85ae1f69f2fbf6f6990 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "doc.aux" 1618866212 1491 b4fce27403565834d30e9756761cce09 "pdflatex"
-  "doc.out" 1618866212 870 67e70a522d2a481f371d5cd6d88d7da5 "pdflatex"
-  "doc.tex" 1618866230 3373 a3fc7adaba7c66349db3b302b18998aa ""
+  "doc.aux" 1618866413 1521 dfd1754037ae4952499116f37d112877 "pdflatex"
+  "doc.out" 1618866413 898 4be3e5f9d5124602489b2d3e06494f45 "pdflatex"
+  "doc.tex" 1618866411 3399 a662d00dd4178fdb067554a94dcc5820 ""
   (generated)
-  "doc.log"
-  "doc.pdf"
   "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.log"
-  "doc.aux"
-  "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.pdf"
   "doc.out"
+  "doc.pdf"
+  "/Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.pdf"
+  "doc.aux"
+  "doc.log"
