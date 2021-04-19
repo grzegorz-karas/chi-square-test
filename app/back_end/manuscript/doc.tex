@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{titlesec} %for styling of sections
+\usepackage{dsfont} %for \mathds{1}
+\usepackage{hyperref} %for url references
+\usepackage[margin=0.5in]{geometry} %for narrow margins
+\usepackage{amsthm}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}[section]
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries}
+    {\thesection}
+    {20pt}
+    {\Large}
+    [{\titlerule[0.8pt]}]
+
+\titleformat{\subsection}
+    {\normalfont\Large\bfseries}
+    {\thesubsection}
+    {20pt}
+    {\Large}
+    %[{\titlerule}]
+    [\vskip-10pt{\makebox[\linewidth][l]{\rule{0.75\textwidth}{0.5pt}}}]
+
+\titleformat{\subsubsection}
+    {\normalfont\large\bfseries}
+    {\thesubsubsection}
+    {20pt}
+    {\large}
+    %[\vskip-10pt{\makebox[\linewidth][l]{\rule{0.5\textwidth}{0.5pt}}}]
+
+
+\title{Chi-square test}
+\author{Grzegorz Karas}
+
+\begin{document}
+
+\maketitle
+
+%\tableofcontents
+
+\section{Definition \cite{wiki, paper}}
+The Pearson's $\chi^2$-test is a test used for hypothesis concerning 
+probabilities of multinomial random variables. It tests a null hypothesis stating that the frequency distribution of certain 
+events observed in a sample is consistent with a particular theoretical distribution.
+
+The test statistic is of following kind
+\begin{equation}
+    \chi^2=\sum_{i=1}^n \frac{\left(O_i-E_i\right)^2}{E_i} = N \sum_{i=1}^n \frac{\left(O_i/N-p_i\right)^2}{p_i}
+\end{equation}
+where
+\begin{itemize}
+    \item $\chi^2$ = Pearson's cumulative test statistic, which asymptotically approaches a $\chi^2$ distribution.
+    \item $O_i$ = number of observation of type i
+    \item N = total number of observations
+    \item $E_i = Np_i$ = the expected (theoretical) count of type i
+    \item n = the number of cells in the table ($rows\cdot columns$)
+\end{itemize}
+
+If the test is fasle, then the appropriate test statistic has approximately 
+a noncentral $\chi^2$ distribution with the same degrees of freedom $df$ and
+a noncentrality parameter $\lambda$, which depends on alternative considered.
+
+\section{Test types}
+Pearson's chi-squared test is used to assess three types of comparison: 
+goodness of fit, homogeneity, and independence.
+
+\begin{itemize}
+    \item A test of \textbf{goodness of fit} establishes whether an observed frequency 
+    distribution differs from a theoretical distribution.
+
+    $\chi^2$ test statistic with degrees of freedom $df=n-1$
+    \item A test of \textbf{homogeneity} compares the distribution of counts for 
+    two or more groups using the same categorical variable.
+
+    $\chi^2$ test statistic with degrees of freedom $df=(rows-1)\cdot(columns-1)$
+    \item A test of \textbf{independence} assesses whether observations consisting of 
+    measures on two variables, expressed in a contingency table, are independent of each other.
+    
+    $\chi^2$ test statistic with degrees of freedom $df=(rows-1)\cdot(columns-1)$
+\end{itemize}
+
+
+
+\subsection{Test of goodness of fit}
+
+\subsection{Test of independence}
+
+\subsection{Test of homogenity}
+
+\subsection{Sample size}
+
+
+\begin{thebibliography}{9}
+    \bibitem{wiki} 
+    Chi-squared-test 
+    \url{https://en.wikipedia.org/wiki/Chi-squared\_test}.
+    \bibitem{paper} 
+    Guenther, W. (1977). 
+    \textit{Power and Sample Size for Approximate Chi-Square Tests.} 
+    The American Statistician, 31(2), 83-85.
+
+\end{thebibliography}   
+
+\end{document}
