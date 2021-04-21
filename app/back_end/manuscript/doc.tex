@@ -4,6 +4,17 @@
 \usepackage{hyperref} %for url references
 \usepackage[margin=0.5in]{geometry} %for narrow margins
 \usepackage{amsthm}
+% --------------------------------------------------
+% for increasing the space before and after equation
+\makeatletter
+\g@addto@macro\normalsize{
+  \setlength\abovedisplayskip{10pt}
+  \setlength\belowdisplayskip{10pt}
+  \setlength\abovedisplayshortskip{10pt}
+  \setlength\belowdisplayshortskip{10pt}
+}
+% --------------------------------------------------
+\makeatother
 \newtheorem{definition}{Definition}
 \newtheorem{example}{Example}[section]
 
@@ -80,15 +91,55 @@ goodness of fit, homogeneity, and independence.
     $\chi^2$ test statistic with degrees of freedom $df=(rows-1)\cdot(columns-1)$
 \end{itemize}
 
-
-
 \subsection{Test of goodness of fit}
+
+Let $X=(X_1, ..., X_k)$ be a multinomial ranom variable with parameters
+$n, p_1, ..., p_k$. Suppose we wish to test
+\begin{equation}
+    H_0: \quad p_i=p_{i,e} \qquad i =1,2,...,k
+\end{equation}
+against
+\begin{equation}
+    H_a: \mbox{not all p's are as given by } H_0
+\end{equation}
+where the $p_{i,e}$ are given expected numbers. The value of the chi-square test-statistic is
+\begin{equation}
+    \chi^2_{H_0} = \sum_{i=1}^k \frac{\left(x_i - np_{i,e}\right)^2}{np_{i,e}} = \sum_{i=1}^k \frac{\left(p_i - p_{i,e}\right)^2}{p_{i,e}}
+\end{equation}
+The chi-square test reject $H_0$ if
+\begin{equation}
+    \chi^2_{H_0} > \chi^2_{k-1,1-\alpha},
+\end{equation}
+where $\alpha$ is the significance level, and $\chi^2_{k-1,1-\alpha}$ is the 
+quantile of order $1-\alpha$ of the $\chi^2$ distribution with $k-1$ degrees of
+freedom.
+The p-value of the test is
+\begin{equation}
+    p-value = P\left(X<\chi^2_{H_0}\right)
+\end{equation}
+
+To evaluate the power of the test let's precisely define the alternative $H_a$ as follow.
+\begin{equation}
+    H_a: \quad p_i=p_{i,a} \qquad i =1,2,...,k
+\end{equation}
+Thus the power o the test is
+\begin{equation}
+    Power = P\left(X_a > \chi^2_{k-1,1-\alpha}\right)
+\end{equation}
+where $X_a$ is a ranom variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
+\begin{equation}
+    \lambda = n \sum_{i=1}^k \frac{\left(p_{i,a}-p_{i,e}\right)^2}{p_{i,a}}
+\end{equation}
+
+
+
+
 
 \subsection{Test of independence}
 
 \subsection{Test of homogenity}
 
-\subsection{Sample size}
+\section{Sample size}
 
 
 \begin{thebibliography}{9}
