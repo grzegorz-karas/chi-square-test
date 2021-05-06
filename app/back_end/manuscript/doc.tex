@@ -98,15 +98,15 @@ goodness of fit, homogeneity, and independence.
 Let $X=(X_1, ..., X_k)$ be a multinomial ranom variable with parameters
 $n, p_1, ..., p_k$. Suppose we wish to test
 \begin{equation}
-    H_0: \quad p_i=p_{i,e} \qquad i =1,2,...,k
+    H_0: \quad p_i=p_{i}' \qquad i =1,2,...,k
 \end{equation}
 against
 \begin{equation}
     H_a: \mbox{not all p's are as given by } H_0
 \end{equation}
-where the $p_{i,e}$ are given expected numbers. The value of the chi-square test-statistic is
+where the $p_{i}'$ are given expected numbers. The value of the chi-square test-statistic is
 \begin{equation}
-    \chi^2_{H_0} = \sum_{i=1}^k \frac{\left(x_i - np_{i,e}\right)^2}{np_{i,e}} = \sum_{i=1}^k \frac{\left(p_i - p_{i,e}\right)^2}{p_{i,e}}
+    \chi^2_{H_0} = \sum_{i=1}^k \frac{\left(x_i - np_{i}'\right)^2}{np_{i}'} = \sum_{i=1}^k \frac{\left(\widehat{p_i}  - p_{i}'\right)^2}{p_{i}'}
 \end{equation}
 The chi-square test reject $H_0$ if
 \begin{equation}
@@ -121,7 +121,7 @@ The p-value of the test is
 \end{equation}
 To evaluate the power of the test let's precisely define the alternative $H_a$ as follow.
 \begin{equation}
-    H_a: \quad p_i=p_{i,a} \qquad i =1,2,...,k
+    H_a: \quad p_i=p_{i}'' \qquad i =1,2,...,k
 \end{equation}
 Thus the power o the test is
 \begin{equation}
@@ -129,7 +129,7 @@ Thus the power o the test is
 \end{equation}
 where $X_a$ is a ranom variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
 \begin{equation}
-    \lambda = n \sum_{i=1}^k \frac{\left(p_{i,a}-p_{i,e}\right)^2}{p_{i,a}}
+    \lambda = n \sum_{i=1}^k \frac{\left(p_{i}''-p_{i}'\right)^2}{p_{i}'}
 \end{equation}
 
 
@@ -141,7 +141,7 @@ parameters $n,p_{ij}$ where $i=1,2,...,r$, $j=1,2,...,c$ and
 $\sum_{i=1}^r\sum_{j=1}^cp_{ij}=1$. 
 Suppopse we wish to test independence
 \begin{equation}
-    H_0: \quad p_{ij}=p_{ij,e}=p_{i \cdot, e}p_{\cdot j, e} \qquad i =1,2,...,r \quad j=1,2,...,c
+    H_0: \quad p_{ij}=p_{ij}=p_{i \cdot}p_{\cdot j} \qquad i =1,2,...,r \quad j=1,2,...,c
 \end{equation}
 against
 \begin{equation}
@@ -190,7 +190,7 @@ Let $X_i=(X_{ij}) \in \mathbb{R}^{c}$ be a multinomial random variable with
 parameters $n_{i},p_{ij}$ for $i=1,2,...,r$ and $\sum_{j=1}^cp_{ij}=1$. 
 Suppopse we wish to test homogenity
 \begin{equation}
-    H_0: \quad p_{1j}=p_{2j}=\cdots = p_{rj} = p_{j,e}\quad j=1,2,...,c
+    H_0: \quad p_{1j}=p_{2j}=\cdots = p_{rj} = p_{j}\quad j=1,2,...,c
 \end{equation}
 against
 \begin{equation}
