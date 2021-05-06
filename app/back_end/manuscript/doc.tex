@@ -2,6 +2,7 @@
 \usepackage{titlesec} %for styling of sections
 \usepackage{dsfont} %for \mathds{1}
 \usepackage{amsfonts} %for \mathbb{R}
+\usepackage{amsmath} % for \begin{align}
 \usepackage{hyperref} %for url references
 \usepackage[margin=0.5in]{geometry} %for narrow margins
 \usepackage{amsthm}
@@ -140,7 +141,7 @@ parameters $n,p_{ij}$ where $i=1,2,...,r$, $j=1,2,...,c$ and
 $\sum_{i=1}^r\sum_{j=1}^cp_{ij}=1$. 
 Suppopse we wish to test independence
 \begin{equation}
-    H_0: \quad p_{ij}=p_{ij,e}=p_{i \cdot}p_{\cdot j} \qquad i =1,2,...,r \quad j=1,2,...,c
+    H_0: \quad p_{ij}=p_{ij,e}=p_{i \cdot, e}p_{\cdot j, e} \qquad i =1,2,...,r \quad j=1,2,...,c
 \end{equation}
 against
 \begin{equation}
@@ -149,39 +150,80 @@ against
 where $p_{i \cdot} = \sum_{j=1}^c p_{ij}$ and $p_{\cdot j} = \sum_{i=1}^r p_{ij}$.
 The value of the chi-square test-statistic is
 \begin{equation}
-    \chi^2_{H_0} = \sum_{i=1}^r\sum_{j=1}^c \frac{\left(x_{ij} - x_{i \cdot}x_{\cdot j}/n\right)^2}{x_{i \cdot}x_{\cdot j}/n} = 1/n \sum_{i=1}^r\sum_{j=1}^c \frac{\left(p_{ij} - p_{i \cdot}p_{\cdot j}\right)^2}{p_{i \cdot}p_{\cdot j}} = 1/n \sum_{i=1}^r\sum_{j=1}^c \frac{\left(p_{ij} - p_{ij,e}\right)^2}{p_{ij,e}} 
+    \chi^2_{H_0} = \sum_{i=1}^r\sum_{j=1}^c \frac{\left(x_{ij} - x_{i \cdot}x_{\cdot j}/n\right)^2}{x_{i \cdot}x_{\cdot j}/n}
 \end{equation}
-where $x_{i \cdot} = \sum_{j=1}^c x_{ij}$ and $x_{\cdot j} = \sum_{i=1}^r x_{ij}$
+where $x_{i \cdot} = \sum_{j=1}^c x_{ij}$ and $x_{\cdot j} = \sum_{i=1}^r x_{ij}$.
+Using parameters $p_{*}$ we observe that
+\begin{align}
+    \chi^2_{H_0} =\frac{1}{n} \sum_{i=1}^r\sum_{j=1}^c \frac{\left(\frac{x_{ij}}{n} - \frac{x_{i \cdot}}{n}\frac{x_{\cdot j}}{n}\right)^2}{\frac{x_{i \cdot}}{n}\frac{x_{\cdot j}}{n}}
+\end{align}
+\begin{align}
+    \chi^2_{H_0} =  \frac{1}{n} \sum_{i=1}^r\sum_{j=1}^c \frac{\left(p_{ij} - p_{i \cdot}p_{\cdot j}\right)^2}{p_{i \cdot}p_{\cdot j}} = \frac{1}{n}  \sum_{i=1}^r\sum_{j=1}^c \frac{\left(p_{ij} - p_{ij,e}\right)^2}{p_{ij,e}} 
+\end{align}
 The chi-square test reject $H_0$ if
 \begin{equation}
     \chi^2_{H_0} > \chi^2_{(r-1)\cdot(c-1),1-\alpha},
 \end{equation}
 To evaluate the power of the test let's precisely define the alternative $H_a$ as follow.
 \begin{equation}
-    H_a: \quad p_{ij}=p_{ij,a} \qquad i =1,2,...,k
+    H_a: \quad p_{ij} = p_{i\cdot}p_{\cdot j} + \frac{c_{ij}}{\sqrt{n}}, \qquad i =1,2,...,r \quad j=1,2,...,c, \quad where \quad \sum_{i=1}^{r}\sum_{j=1}^{c}c_{ij}=0, 
 \end{equation}
 Thus the power o the test is
 \begin{equation}
     Power = P\left(X_a > \chi^2_{(r-1)\cdot(c-1),1-\alpha}\right)
 \end{equation}
-where $X_a$ is a ranom variable that follows the noncentral $\chi^2$ distribution.
-If the alternative is of the type
+where $X_a$ is a ranom variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
 \begin{equation}
-    p_{ij,a} = p_{i\cdot}p_{\cdot js} + \frac{c_{ij}}{\sqrt{n}}, \qquad\sum_{i=1}^{r}\sum_{j=1}^{c}c_{ij}=0,
-\end{equation}
-the noncentrality parameter is 
-\begin{equation}
-    \lambda = \sum_{i=1}^{r}\sum_{j=1} \frac{c_{ij}^2}{p_{i\cdot}p_{\cdot j}} - \sum_{i=1}^{r}\frac{c_{i \cdot}^2}{p_{i \cdot}} - \sum_{j=1}^{c}\frac{c_{\cdot j}^2}{p_{\cdot j}},
+    \lambda = \sum_{i=1}^{r}\sum_{j=1}^c \frac{c_{ij}^2}{p_{i\cdot}p_{\cdot j}} - \sum_{i=1}^{r}\frac{c_{i \cdot}^2}{p_{i \cdot}} - \sum_{j=1}^{c}\frac{c_{\cdot j}^2}{p_{\cdot j}},
 \end{equation}
 where $c_{i \cdot} = \sum_{j=1}^c c_{ij}$ and $c_{\cdot j} = \sum_{i=1}^r c_{ij}$.
 
 If $\Delta_{ij} = c_{ij}/\sqrt{n}$, then 
 \begin{equation}
-    \lambda = 1/n \left[\sum_{i=1}^{r}\sum_{j=1} \frac{\Delta_{ij}^2}{p_{i\cdot}p_{\cdot j}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{p_{i \cdot}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{p_{\cdot j}}\right],
+    \lambda = \frac{1}{n}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{p_{i\cdot}p_{\cdot j}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{p_{i \cdot}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{p_{\cdot j}}\right],
 \end{equation}
 
 
+
 \subsection{Test of homogenity}
+Let $X_i=(X_{ij}) \in \mathbb{R}^{c}$ be a multinomial random variable with
+parameters $n_{i},p_{ij}$ for $i=1,2,...,r$ and $\sum_{j=1}^cp_{ij}=1$. 
+Suppopse we wish to test homogenity
+\begin{equation}
+    H_0: \quad p_{1j}=p_{2j}=\cdots = p_{rj} = p_{j,e}\quad j=1,2,...,c
+\end{equation}
+against
+\begin{equation}
+    H_a: \mbox{not all the equatons given under $H_0$ are satisfied}
+\end{equation}
+The value of the chi-square test-statistic is
+\begin{equation}
+    \chi^2_{H_0} = \sum_{i=1}^r\sum_{j=1}^c \frac{\left(x_{ij} - x_{i \cdot}x_{\cdot j}/n\right)^2}{x_{i \cdot}x_{\cdot j}/n}
+\end{equation}
+where $x_{i \cdot} = \sum_{j=1}^c x_{ij} = n_{i}$ and $n = \sum_{i=1}^r n_{i}$.
+The chi-square test reject $H_0$ if
+\begin{equation}
+    \chi^2_{H_0} > \chi^2_{(r-1)\cdot(c-1),1-\alpha},
+\end{equation}
+To evaluate the power of the test let's precisely define the alternative $H_a$ as follow.
+\begin{equation}
+    H_a: p_{ij} = p_{j} + \frac{c_{ij}}{\sqrt{n}}, \qquad j=1,2,...,c \quad where \quad \sum_{j=1}^{c}c_{ij}=0, 
+\end{equation}
+Thus the power o the test is
+\begin{equation}
+    Power = P\left(X_a > \chi^2_{(r-1)\cdot(c-1),1-\alpha}\right)
+\end{equation}
+where $X_a$ is a ranom variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
+\begin{equation}
+    \lambda = \sum_{j=1}^{c}\frac{1}{p_j}\left[ \sum_{i=1}^{r} c_{ij}^2 \frac{n_i}{n} -  \left(\sum_{i=1}^{r} c_{ij} \frac{n_i}{n}\right)^2  \right],
+\end{equation}
+If $\Delta_{ij} = c_{ij}/\sqrt{n}$, then 
+\begin{equation}
+    \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{p_j}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 \frac{n_i}{n} -  \left(\sum_{i=1}^{r} \Delta_{ij} \frac{n_i}{n}\right)^2  \right]
+\end{equation}
+
+
+
 
 \section{Sample size}
 
