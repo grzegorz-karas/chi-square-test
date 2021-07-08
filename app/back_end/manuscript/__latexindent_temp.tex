@@ -53,44 +53,44 @@
 %\tableofcontents
 
 \section{Definition \cite{wiki, paper}}
-The Pearson's $\chi^2$-test is a test used for hypothesis concerning 
-probabilities of multinomial random variables. It tests a null hypothesis stating that the frequency distribution of certain 
-events observed in a sample is consistent with a particular theoretical distribution.
+The $\chi^2$-test is a statistical method to test hypothesis, where random variable
+follows multinomial distribution. It tests a null hypothesis stating that the frequency distribution of certain 
+events observed in an observer sample is consistent with a particular theoretical distribution.
 
-The test statistic is of following kind
+The most common $\chi^2$-test is a Pearson's chi-square test in which the test statistic is of following kind
 \begin{equation}
     \chi^2=\sum_{i=1}^n \frac{\left(O_i-E_i\right)^2}{E_i} = N \sum_{i=1}^n \frac{\left(O_i/N-p_i\right)^2}{p_i}
 \end{equation}
 where
 \begin{itemize}
-    \item $\chi^2$ = Pearson's cumulative test statistic, which asymptotically approaches a $\chi^2$ distribution.
-    \item $O_i$ = number of observation of type i
-    \item N = total number of observations
-    \item $E_i = Np_i$ = the expected (theoretical) count of type i
-    \item n = the number of cells in the table ($rows\cdot columns$)
+    \item $\chi^2$ - Pearson's cumulative test statistic, which asymptotically approaches a $\chi^2$ distribution.
+    \item $O_i$ - number of observation of type i
+    \item N - total number of observations
+    \item $E_i = Np_i$ - the expected (theoretical) count of type i
+    \item n - the number of cells in the table ($rows\cdot columns$)
 \end{itemize}
 
-If the test is fasle, then the appropriate test statistic has approximately 
-a noncentral $\chi^2$ distribution with the same degrees of freedom $df$ and
+If the test fails, then the appropriate test statistic has approximately 
+a noncentral $\chi^2$ distribution with the same degrees of freedom ($df$) and
 a noncentrality parameter $\lambda$, which depends on alternative considered.
 
 \section{Test types \cite{wiki}}
-Pearson's chi-squared test is used to assess three types of comparison: 
+Pearson's chi-squared test is used to assess three types of hypothesis testing: 
 goodness of fit, homogeneity, and independence.
 
 \begin{itemize}
     \item A test of \textbf{goodness of fit} establishes whether an observed frequency 
     distribution differs from a theoretical distribution.
-
-    $\chi^2$ test statistic with degrees of freedom $df=n-1$
+    
+    The $\chi^2$ test statistic follows the $\chi^2$ distribution with $df=n-1$.
     \item A test of \textbf{homogeneity} compares the distribution of counts for 
     two or more groups using the same categorical variable.
 
-    $\chi^2$ test statistic with degrees of freedom $df=(rows-1)\cdot(columns-1)$
+    The $\chi^2$ test statistic follows the $\chi^2$ distribution with $df=(rows-1)\cdot(columns-1)$.
     \item A test of \textbf{independence} assesses whether observations consisting of 
     measures on two variables, expressed in a contingency table, are independent of each other.
     
-    $\chi^2$ test statistic with degrees of freedom $df=(rows-1)\cdot(columns-1)$
+    The $\chi^2$ test statistic follows the $\chi^2$ distribution with $df=(rows-1)\cdot(columns-1)$.
 \end{itemize}
 
 \subsection{Test of goodness of fit}
@@ -98,7 +98,7 @@ goodness of fit, homogeneity, and independence.
 Let $X=(X_1, ..., X_k)$ be a multinomial ranom variable with parameters
 $n, p_1, ..., p_k$. Suppose we wish to test
 \begin{equation}
-    H_0: \quad p_i=p_{i}' \qquad i =1,2,...,k
+    H_0: \quad p_i=p_{i}^0 \qquad i =1,2,...,k
 \end{equation}
 against
 \begin{equation}
@@ -106,7 +106,7 @@ against
 \end{equation}
 where the $p_{i}'$ are given expected numbers. The value of the chi-square test-statistic is
 \begin{equation}
-    \chi^2_{H_0} = \sum_{i=1}^k \frac{\left(x_i - np_{i}'\right)^2}{np_{i}'} = \sum_{i=1}^k \frac{\left(\widehat{p_i}  - p_{i}'\right)^2}{p_{i}'}
+    \chi^2_{H_0} = \sum_{i=1}^k \frac{\left(x_i - np_{i}^0\right)^2}{np_{i}^0} = \sum_{i=1}^k \frac{\left(\widehat{p_i}  - p_{i}^0\right)^2}{p_{i}^0}
 \end{equation}
 The chi-square test reject $H_0$ if
 \begin{equation}
@@ -121,7 +121,7 @@ The p-value of the test is
 \end{equation}
 To evaluate the power of the test let's precisely define the alternative $H_a$ as follow.
 \begin{equation}
-    H_a: \quad p_i=p_{i}'' \qquad i =1,2,...,k
+    H_a: \quad p_i=p_{i}^a \qquad i =1,2,...,k
 \end{equation}
 Thus the power o the test is
 \begin{equation}
@@ -129,7 +129,7 @@ Thus the power o the test is
 \end{equation}
 where $X_a$ is a ranom variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
 \begin{equation}
-    \lambda = n \sum_{i=1}^k \frac{\left(p_{i}''-p_{i}'\right)^2}{p_{i}'}
+    \lambda = n \sum_{i=1}^k \frac{\left(p_{i}^a-p_{i}^0\right)^2}{p_{i}^0}
 \end{equation}
 
 
@@ -141,7 +141,7 @@ parameters $n,p_{ij}$ where $i=1,2,...,r$, $j=1,2,...,c$ and
 $\sum_{i=1}^r\sum_{j=1}^cp_{ij}=1$. 
 Suppopse we wish to test independence
 \begin{equation}
-    H_0: \quad p_{ij}=p_{ij}=p_{i \cdot}p_{\cdot j} \qquad i =1,2,...,r \quad j=1,2,...,c
+    H_0: \quad p_{ij}=p_{i \cdot}p_{\cdot j} \qquad i =1,2,...,r \quad j=1,2,...,c
 \end{equation}
 against
 \begin{equation}
@@ -153,12 +153,10 @@ The value of the chi-square test-statistic is
     \chi^2_{H_0} = \sum_{i=1}^r\sum_{j=1}^c \frac{\left(x_{ij} - x_{i \cdot}x_{\cdot j}/n\right)^2}{x_{i \cdot}x_{\cdot j}/n}
 \end{equation}
 where $x_{i \cdot} = \sum_{j=1}^c x_{ij}$ and $x_{\cdot j} = \sum_{i=1}^r x_{ij}$.
-Using parameters $p_{*}$ we observe that
+We observe that
 \begin{align}
-    \chi^2_{H_0} =\frac{1}{n} \sum_{i=1}^r\sum_{j=1}^c \frac{\left(\frac{x_{ij}}{n} - \frac{x_{i \cdot}}{n}\frac{x_{\cdot j}}{n}\right)^2}{\frac{x_{i \cdot}}{n}\frac{x_{\cdot j}}{n}}
-\end{align}
-\begin{align}
-    \chi^2_{H_0} =  \frac{1}{n} \sum_{i=1}^r\sum_{j=1}^c \frac{\left(p_{ij} - p_{i \cdot}p_{\cdot j}\right)^2}{p_{i \cdot}p_{\cdot j}} = \frac{1}{n}  \sum_{i=1}^r\sum_{j=1}^c \frac{\left(p_{ij} - p_{ij,e}\right)^2}{p_{ij,e}} 
+    \chi^2_{H_0} =\frac{1}{n} \sum_{i=1}^r\sum_{j=1}^c \frac{\left(\frac{x_{ij}}{n} - \frac{x_{i \cdot}}{n}\frac{x_{\cdot j}}{n}\right)^2}{\frac{x_{i \cdot}}{n}\frac{x_{\cdot j}}{n}}=  \frac{1}{n} \sum_{i=1}^r\sum_{j=1}^c \frac{\left(\widehat{p_{ij}} - \widehat{p_{i \cdot}}\widehat{p_{\cdot j}}\right)^2}{\widehat{p_{i \cdot}}\widehat{p_{\cdot j}}}nek\
+    
 \end{align}
 The chi-square test reject $H_0$ if
 \begin{equation}
