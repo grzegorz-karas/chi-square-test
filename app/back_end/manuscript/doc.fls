@@ -484,8 +484,18 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestri
 INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-OUTPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
 OUTPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.pdf
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+INPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
+OUTPUT /Users/grzegorzkaras/OTHER/GRZEGORZ_KARAS_GITHUB/chi-square-test/app/back_end/manuscript/doc.out
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
@@ -537,6 +547,7 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.p
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
@@ -544,6 +555,7 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
