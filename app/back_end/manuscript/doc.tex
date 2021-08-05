@@ -114,7 +114,7 @@ The chi-square test reject $H_0$ if
     \chi^2_{H_0} > \chi^2_{k-1,1-\alpha},
 \end{equation}
 where $\alpha$ is the significance level, and $\chi^2_{k-1,1-\alpha}$ is the 
-quantile of order $1-\alpha$ of the $\chi^2$ distribution with $k-1$ degrees of
+quantile of order $1-\alpha$ of the central $\chi^2$ distribution with $k-1$ degrees of
 freedom.
 The p-value of the test is
 \begin{equation}
@@ -164,7 +164,7 @@ The chi-square test reject $H_0$ if
 \end{equation}
 To evaluate the power of the test let's precisely define the alternative $H_a$ as follow.
 \begin{equation}
-    H_a: \quad p_{ij} = p_{i\cdot}p_{\cdot j} + \frac{c_{ij}}{\sqrt{n}}, \qquad i =1,2,...,r \quad j=1,2,...,c, \quad where \quad \sum_{i=1}^{r}\sum_{j=1}^{c}c_{ij}=0, 
+    H_a: \quad p_{ij} =\underbrace{p_{i\cdot}p_{\cdot j} + \frac{c_{ij}}{\sqrt{n}}}_{p^a_{ij}}, \qquad i =1,2,...,r \quad j=1,2,...,c, \quad where \quad \sum_{i=1}^{r}\sum_{j=1}^{c}c_{ij}=0, 
 \end{equation}
 Thus the power of the test is
 \begin{equation}
@@ -177,7 +177,7 @@ where $X_a$ is a random variable that follows the noncentral $\chi^2$ distributi
 where $c_{i \cdot} = \sum_{j=1}^c c_{ij}$ and $c_{\cdot j} = \sum_{i=1}^r c_{ij}$.
 
 If $\Delta_{ij} = c_{ij}/\sqrt{n}$, then 
-\begin{equation}
+\begin{equation}\label{independence_lambda}
     \lambda = \frac{1}{n}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{p_{i\cdot}p_{\cdot j}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{p_{i \cdot}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{p_{\cdot j}}\right],
 \end{equation}
 
@@ -188,7 +188,7 @@ Let $X_i=(X_{ij}) \in \mathbb{R}^{c}$ be a multinomial random variable with
 parameters $n_{i},p_{ij}$ for $i=1,2,...,r$ and $\sum_{j=1}^cp_{ij}=1$. 
 Suppose we wish to test homogeneity
 \begin{equation}
-    H_0: \quad p_{1j}=p_{2j}=\cdots = p_{rj} = p_{j}\quad j=1,2,...,c
+    H_0: \quad p_{1j}=p_{2j}=\cdots = p_{rj} = p_{\cdot j}\quad j=1,2,...,c
 \end{equation}
 against
 \begin{equation}
@@ -205,7 +205,7 @@ The chi-square test reject $H_0$ if
 \end{equation}
 To evaluate the power of the test let's precisely define the alternative $H_a$ as follow.
 \begin{equation}
-    H_a: p_{ij} = p_{j} + \frac{c_{ij}}{\sqrt{n}}, \qquad j=1,2,...,c \quad where \quad \sum_{j=1}^{c}c_{ij}=0, 
+    H_a: p_{ij} = \underbrace{p_{\cdot j} + \frac{c_{ij}}{\sqrt{n}}}_{p^a_{ij}} , \qquad j=1,2,...,c \quad where \quad \sum_{j=1}^{c}c_{ij}=0, 
 \end{equation}
 Thus the power of the test is
 \begin{equation}
@@ -213,17 +213,20 @@ Thus the power of the test is
 \end{equation}
 where $X_a$ is a random variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
 \begin{equation}
-    \lambda = \sum_{j=1}^{c}\frac{1}{p_j}\left[ \sum_{i=1}^{r} c_{ij}^2 \frac{n_i}{n} -  \left(\sum_{i=1}^{r} c_{ij} \frac{n_i}{n}\right)^2  \right],
+    \lambda = \sum_{j=1}^{c}\frac{1}{p_{\cdot j}}\left[ \sum_{i=1}^{r} c_{ij}^2 \frac{n_i}{n} -  \left(\sum_{i=1}^{r} c_{ij} \frac{n_i}{n}\right)^2  \right],
 \end{equation}
 If $\Delta_{ij} = c_{ij}/\sqrt{n}$, then 
 \begin{equation}
-    \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{p_j}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 \frac{n_i}{n} -  \left(\sum_{i=1}^{r} \Delta_{ij} \frac{n_i}{n}\right)^2  \right]
+    \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{p_{\cdot j}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 \frac{n_i}{n} -  \left(\sum_{i=1}^{r} \Delta_{ij} \frac{n_i}{n}\right)^2  \right]
 \end{equation}
-
+It is worth to observe that $\frac{n_i}{n}$ is the same as $p_{i\cdot}$ and the equation holds following form
+\begin{equation}\label{homogeneity_lambda}
+    \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{p_{\cdot j}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
+\end{equation}
 
 \section{Sample size}
 The sample size required for a test to reach predefined power can be calculated
-under follwoing assumption 
+under following assumption 
 
 \begin{assumption}
 The alternative hypothesis is the one given by the observed sample. 
@@ -232,21 +235,21 @@ In other words observed estimates construct the alternative hypothesis. The
 procedure to retrieve the sample size is following:
 
 \begin{enumerate}
-    \item Calculate contingency table in terms of probabilities.
-    \item For goodness-of-fit set the probabilities, for other test calculate expected values from the contingency table.
+    \item Calculate contingency table in terms of probabilities ($p^a_{ij}$).
+    \item For goodness-of-fit set the probabilities, for other test calculate expected values from the contingency table ($\widehat{p_{ij}}$).
     \item Calculate deltas $\Delta_{ij}$ between contingency table and values from the previous step.
     \item Calculate the $\alpha$-quantile $\chi^2_{df,1-\alpha}$ of a central chi-square distribution.
     \item Having defined target power ($\beta$) of a test, find the noncentrality parameter ($\lambda$) of a noncentral chi-square distribution.
     \begin{equation}
         \beta = P^\lambda\left(X_a > \chi^2_{df,1-\alpha} \right).
     \end{equation}
-    \item Depending on the type of test calculate the sample size $n$.
+    \item Depending on the type of test calculate the sample size $n$. Details of the calculation is shown in the next sections.
 \end{enumerate}
 
 
 \subsection{Sample size for test of goodness of fit}
 The $p_i^0$ from Equation \ref{goodness_of_fit_h_0} is defined a priori for every $i$.
-The $p_i^a$ from Equation \ref{goodness_of_fit_h_a} is defined a posteriori for every $i$.
+The $p_i^a$ from Equation \ref{goodness_of_fit_h_a} is defined a posteriori and is equal to the estimate $\widehat{p_{i}}$ derived from observed sample for every $i$.
 In this case the Equation \ref{goodness_of_fit_lambda} is following:
 
 \begin{equation}
@@ -259,7 +262,28 @@ So
 
 
 \subsection{Sample size for test of independence}
+
+Having performed steps until 5 the Equation \ref{independence_lambda} is following
+
+\begin{equation}
+    \lambda = \frac{1}{n}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right],
+\end{equation}
+So
+\begin{equation}
+    n = \frac{1}{\lambda}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right],
+\end{equation}
+
 \subsection{Sample size for test of homogeneity}
+
+Having performed steps until 5 the Equation \ref{homogeneity_lambda} is following
+
+\begin{equation}
+    \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{\widehat{p_{\cdot j}}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
+\end{equation}
+So
+\begin{equation}
+    n = \frac{1}{\lambda}\sum_{j=1}^{c}\frac{1}{\widehat{p_{\cdot j}}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
+\end{equation}
 
 \begin{thebibliography}{9}
     \bibitem{wiki} 
