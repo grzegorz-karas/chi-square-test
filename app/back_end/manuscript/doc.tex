@@ -126,9 +126,9 @@ To evaluate the power of the test let's precisely define the alternative $H_a$ a
 \end{equation}
 Thus the power o the test is
 \begin{equation}
-    Power = P^{\lambda}\left(X_a > \chi^2_{k-1,1-\alpha}\right)
+    Power = P^{\lambda}\left(X > \chi^2_{k-1,1-\alpha}\right)
 \end{equation}
-where $X_a$ is a ranom variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
+where $X$ is a ranom variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
 \begin{equation}\label{goodness_of_fit_lambda}
     \lambda = n \sum_{i=1}^k \frac{\left(p_{i}^a-p_{i}^0\right)^2}{p_{i}^0}
 \end{equation}
@@ -168,9 +168,9 @@ To evaluate the power of the test let's precisely define the alternative $H_a$ a
 \end{equation}
 Thus the power of the test is
 \begin{equation}
-    Power = P^{\lambda}\left(X_a > \chi^2_{(r-1)\cdot(c-1),1-\alpha}\right)
+    Power = P^{\lambda}\left(X > \chi^2_{(r-1)\cdot(c-1),1-\alpha}\right)
 \end{equation}
-where $X_a$ is a random variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
+where $X$ is a random variable that follows the noncentral $\chi^2$ distribution with the noncentrality parameter
 \begin{equation}
     \lambda = \sum_{i=1}^{r}\sum_{j=1}^c \frac{c_{ij}^2}{p_{i\cdot}p_{\cdot j}} - \sum_{i=1}^{r}\frac{c_{i \cdot}^2}{p_{i \cdot}} - \sum_{j=1}^{c}\frac{c_{\cdot j}^2}{p_{\cdot j}},
 \end{equation}
@@ -239,9 +239,10 @@ procedure to retrieve the sample size is following:
     \item For goodness-of-fit set the probabilities, for other test calculate expected values from the contingency table ($\widehat{p_{ij}}$).
     \item Calculate deltas $\Delta_{ij}$ between contingency table and values from the previous step.
     \item Calculate the $\alpha$-quantile $\chi^2_{df,1-\alpha}$ of a central chi-square distribution.
-    \item Having defined target power ($\beta$) of a test, find the noncentrality parameter ($\lambda$) of a noncentral chi-square distribution.
+    \item Having defined target power ($\beta$) of a test, find the noncentrality parameter ($\lambda$) of a noncentral chi-square distribution. 
+    The parameter $\lambda$ is found solving following equation
     \begin{equation}
-        \beta = P^\lambda\left(X_a > \chi^2_{df,1-\alpha} \right).
+        \beta = P^\lambda\left(X > \chi^2_{df,1-\alpha} \right).
     \end{equation}
     \item Depending on the type of test calculate the sample size $n$. Details of the calculation is shown in the next sections.
 \end{enumerate}
@@ -268,7 +269,7 @@ Having performed steps until 5 the Equation \ref{independence_lambda} is followi
 \begin{equation}
     \lambda = \frac{1}{n}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right],
 \end{equation}
-So
+So the sample sie $n$ is
 \begin{equation}
     n = \frac{1}{\lambda}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right],
 \end{equation}
@@ -280,7 +281,7 @@ Having performed steps until 5 the Equation \ref{homogeneity_lambda} is followin
 \begin{equation}
     \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{\widehat{p_{\cdot j}}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
 \end{equation}
-So
+So the sample sie $n$ is
 \begin{equation}
     n = \frac{1}{\lambda}\sum_{j=1}^{c}\frac{1}{\widehat{p_{\cdot j}}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
 \end{equation}
