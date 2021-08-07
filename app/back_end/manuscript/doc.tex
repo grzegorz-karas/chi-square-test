@@ -178,7 +178,7 @@ where $c_{i \cdot} = \sum_{j=1}^c c_{ij}$ and $c_{\cdot j} = \sum_{i=1}^r c_{ij}
 
 If $\Delta_{ij} = c_{ij}/\sqrt{n}$, then 
 \begin{equation}\label{independence_lambda}
-    \lambda = \frac{1}{n}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{p_{i\cdot}p_{\cdot j}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{p_{i \cdot}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{p_{\cdot j}}\right],
+    \lambda = n\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{p_{i\cdot}p_{\cdot j}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{p_{i \cdot}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{p_{\cdot j}}\right],
 \end{equation}
 
 
@@ -217,11 +217,11 @@ where $X_a$ is a random variable that follows the noncentral $\chi^2$ distributi
 \end{equation}
 If $\Delta_{ij} = c_{ij}/\sqrt{n}$, then 
 \begin{equation}
-    \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{p_{\cdot j}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 \frac{n_i}{n} -  \left(\sum_{i=1}^{r} \Delta_{ij} \frac{n_i}{n}\right)^2  \right]
+    \lambda = n\sum_{j=1}^{c}\frac{1}{p_{\cdot j}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 \frac{n_i}{n} -  \left(\sum_{i=1}^{r} \Delta_{ij} \frac{n_i}{n}\right)^2  \right]
 \end{equation}
 It is worth to observe that $\frac{n_i}{n}$ is the same as $p_{i\cdot}$ and the equation holds following form
 \begin{equation}\label{homogeneity_lambda}
-    \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{p_{\cdot j}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
+    \lambda = n\sum_{j=1}^{c}\frac{1}{p_{\cdot j}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
 \end{equation}
 
 \section{Sample size}
@@ -267,11 +267,11 @@ So
 Having performed steps until 5 the Equation \ref{independence_lambda} is following
 
 \begin{equation}
-    \lambda = \frac{1}{n}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right],
+    \lambda = n\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right],
 \end{equation}
 So the sample sie $n$ is
 \begin{equation}
-    n = \frac{1}{\lambda}\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right],
+    n = \frac{\lambda}{\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right]},
 \end{equation}
 
 \subsection{Sample size for test of homogeneity}
@@ -279,11 +279,11 @@ So the sample sie $n$ is
 Having performed steps until 5 the Equation \ref{homogeneity_lambda} is following
 
 \begin{equation}
-    \lambda = \frac{1}{n}\sum_{j=1}^{c}\frac{1}{\widehat{p_{\cdot j}}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
+    \lambda = n\sum_{j=1}^{c}\frac{1}{\widehat{p_{\cdot j}}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
 \end{equation}
 So the sample sie $n$ is
 \begin{equation}
-    n = \frac{1}{\lambda}\sum_{j=1}^{c}\frac{1}{\widehat{p_{\cdot j}}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]
+    n = \frac{\lambda}{\sum_{j=1}^{c}\frac{1}{\widehat{p_{\cdot j}}}\left[ \sum_{i=1}^{r} \Delta_{ij}^2 p_{i\cdot} -  \left(\sum_{i=1}^{r} \Delta_{ij} p_{i\cdot}\right)^2  \right]}
 \end{equation}
 
 \begin{thebibliography}{9}
