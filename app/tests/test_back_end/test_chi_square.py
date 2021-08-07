@@ -7,8 +7,20 @@ import app.back_end.chi_square as chi_square
 
 class TestChiSquareTestOutput:
     def test_goodness_of_fit(self):
-        result = chi_square.test(test_type='goodness-of-fit', alpha=0.05,
-                                 n_obs=[[10, 10, 10, 10, 10, 10]])
+        result = chi_square.test(test_type='goodness-of-fit', 
+                                alpha=0.05,
+                                 n_obs=[[10, 10, 10, 10, 10, 10]],
+                                 n_exp=[[10, 10, 10, 10, 10, 10]])
+
+        res_exp = {
+            'dof': 5,
+            'qchi2': 3.8415, 
+            'chi2_stat': 72,
+            'power': 1,
+            'p_value': 1, 
+            'lambda_factor': 0.36,
+
+        }
         assert True
 
     def test_independence(self):
@@ -16,12 +28,12 @@ class TestChiSquareTestOutput:
                                   n_obs=[[20, 80], [80, 20]])
 
         res_exp = {
-            'n': 200, 'dof': 1,
-            'n_exp': np.array([[50, 50], [50, 50]]),
-            'p_exp': np.array([[0.25, 0.25], [0.25, 0.25]]),
+            'dof': 1,
+            'qchi2': 3.8415, 
+            'chi2_stat': 72,
+            'power': 1,
+            'p_value': 0, 
             'lambda_factor': 0.36,
-            'qchi2': 3.8415, 'chi2_stat': 72,
-            'p_value': 0, 'power': 1
         }
 
         cnft.assert_equal(res_exp, res_obs)
@@ -31,12 +43,12 @@ class TestChiSquareTestOutput:
                                   n_obs=[[20, 80], [80, 20]])
 
         res_exp = {
-            'n': 200, 'dof': 1,
-            'n_exp': np.array([[50, 50], [50, 50]]),
-            'p_exp': np.array([[0.5, 0.5], [0.5, 0.5]]),
+            'dof': 1,
+            'qchi2': 3.8415, 
+            'chi2_stat': 72,
+            'power': 1,
+            'p_value': 0, 
             'lambda_factor': 0.36,
-            'qchi2': 3.8415, 'chi2_stat': 72,
-            'p_value': 0, 'power': 1
         }
 
         cnft.assert_equal(res_exp, res_obs)
