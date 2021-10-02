@@ -236,8 +236,8 @@ procedure to retrieve the sample size is following:
 
 \begin{enumerate}
     \item Calculate contingency table in terms of probabilities ($p^a_{ij}$).
-    \item For goodness-of-fit set the probabilities, for other test calculate expected values from the contingency table ($\widehat{p_{ij}}$).
-    \item Calculate deltas $\Delta_{ij}$ between contingency table and values from the previous step.
+    \item For goodness-of-fit set the probabilities, for other tests calculate expected values from the contingency table ($\widehat{p_{ij}}$).
+    \item Calculate deltas $\Delta_{ij}$ between contingency table and values from the set or calculated expected values from the previous step.
     \item Calculate the $\alpha$-quantile $\chi^2_{df,1-\alpha}$ of a central chi-square distribution.
     \item Having defined target power ($\beta$) of a test, find the noncentrality parameter ($\lambda$) of a noncentral chi-square distribution. 
     The parameter $\lambda$ is found solving following equation
@@ -248,7 +248,7 @@ procedure to retrieve the sample size is following:
 \end{enumerate}
 
 
-\subsection{Sample size for test of goodness of fit}
+\subsection{Sample size - test of goodness of fit}
 The $p_i^0$ from Equation \ref{goodness_of_fit_h_0} is defined a priori for every $i$.
 The $p_i^a$ from Equation \ref{goodness_of_fit_h_a} is defined a posteriori and is equal to the estimate $\widehat{p_{i}}$ derived from observed sample for every $i$.
 In this case the Equation \ref{goodness_of_fit_lambda} is following:
@@ -262,7 +262,7 @@ So
 \end{equation}
 
 
-\subsection{Sample size for test of independence}
+\subsection{Sample size - test of independence}
 
 Having performed steps until 5 the Equation \ref{independence_lambda} is following
 
@@ -274,7 +274,7 @@ So the sample sie $n$ is
     n = \frac{\lambda}{\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right]},
 \end{equation}
 
-\subsection{Sample size for test of homogeneity}
+\subsection{Sample size - test of homogeneity}
 
 Having performed steps until 5 the Equation \ref{homogeneity_lambda} is following
 
