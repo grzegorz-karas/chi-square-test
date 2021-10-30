@@ -34,8 +34,8 @@ def test(test_type: str,
     n_obs = convert_to_2D(n_obs)
 
     n = n_obs.sum()
-    
-    if test_type=='homogenity':
+
+    if test_type == 'homogenity':
 
         n_obs_i__ = n_obs.sum(axis=1, keepdims=True)
         n_obs___j = n_obs.sum(axis=0, keepdims=True)
@@ -58,13 +58,13 @@ def test(test_type: str,
             ).sum()
         else:
             lambda_factor = None
-    
+
     else:
-    
+
         p_obs = n_obs / n
 
         if test_type == 'goodness-of-fit':
-            
+
             if n_exp:
                 n_exp = convert_to_2D(n_exp)
             else:
@@ -87,9 +87,10 @@ def test(test_type: str,
 
             p_exp = n_exp / n
 
-            chi2_stat, p_value, dof, _ = chi2_contingency(n_obs, correction=False)
+            chi2_stat, p_value, dof, _ = chi2_contingency(
+                n_obs, correction=False)
 
-            delta = p_obs - p_exp 
+            delta = p_obs - p_exp
 
             delta_i__ = delta.sum(axis=1, keepdims=True)
             delta___j = delta.sum(axis=0, keepdims=True)
@@ -106,7 +107,7 @@ def test(test_type: str,
     qchi2 = chi2.ppf(1-alpha, dof)
 
     noncentral_param = n * lambda_factor
-    
+
     if noncentral_param >= 0:
         power = 1 - cdf(qchi2, dof, noncentral_param)
     else:
@@ -121,6 +122,21 @@ def test(test_type: str,
         'lambda_factor': lambda_factor,
     }
     return result
+
+
+def find_noncentral_param(dof, qchi2, target_power):
+
+    noncentral_param = 0
+    step = 0.1
+    power = 0
+
+    while True:
+        power = ncx2.sf(qchi2, dof, noncentral_param)
+
+        if np.round(target_power, 4) <= np.round(power, 4):
+            return noncentral_param
+
+        noncentral_param += step
 
 
 def sample_size(dof: int,
