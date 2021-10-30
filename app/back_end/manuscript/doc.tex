@@ -198,7 +198,10 @@ The value of a chi-square test-statistic is
 \begin{equation}
     \chi^2_{H_0} = \sum_{i=1}^r\sum_{j=1}^c \frac{\left(x_{ij} - x_{i \cdot}x_{\cdot j}/n\right)^2}{x_{i \cdot}x_{\cdot j}/n}
 \end{equation}
-where $x_{i \cdot} = \sum_{j=1}^c x_{ij} = n_{i}$ and $n = \sum_{i=1}^r n_{i}$.
+where $x_{i \cdot} = \sum_{j=1}^c x_{ij} = n_{i}$ and $n = \sum_{i=1}^r n_{i}$. Please be aware that the parameter $n_i$ is selected before an experiment starts. 
+In other words there is no randomness in total observations of each random variables $X_1$, ... $X_i$. 
+In the test of independence the count of observations in each group has not been defined before the experiment and only the total number of observations for all groups was given.
+This is because the split between groups in the test of independence is a part of random variable whereas the split between groups in the test of homogenity is deterministic.
 The chi-square test reject $H_0$ if
 \begin{equation}
     \chi^2_{H_0} > \chi^2_{(r-1)\cdot(c-1),1-\alpha},

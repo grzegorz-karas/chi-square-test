@@ -198,7 +198,10 @@ The value of a chi-square test-statistic is
 \begin{equation}
     \chi^2_{H_0} = \sum_{i=1}^r\sum_{j=1}^c \frac{\left(x_{ij} - x_{i \cdot}x_{\cdot j}/n\right)^2}{x_{i \cdot}x_{\cdot j}/n}
 \end{equation}
-where $x_{i \cdot} = \sum_{j=1}^c x_{ij} = n_{i}$ and $n = \sum_{i=1}^r n_{i}$.
+where $x_{i \cdot} = \sum_{j=1}^c x_{ij} = n_{i}$ and $n = \sum_{i=1}^r n_{i}$. Please be aware that the parameter $n_i$ is selected before an experiment starts. 
+In other words there is no randomness in total observations of each random variables $X_1$, ... $X_i$. 
+In the test of independence the count of observations in each group has not been defined before the experiment and only the total number of observations for all groups was given.
+This is because the split between groups in the test of independence is a part of random variable whereas the split between groups in the test of homogenity is deterministic.
 The chi-square test reject $H_0$ if
 \begin{equation}
     \chi^2_{H_0} > \chi^2_{(r-1)\cdot(c-1),1-\alpha},
@@ -236,8 +239,8 @@ procedure to retrieve the sample size is following:
 
 \begin{enumerate}
     \item Calculate contingency table in terms of probabilities ($p^a_{ij}$).
-    \item For goodness-of-fit set the probabilities, for other test calculate expected values from the contingency table ($\widehat{p_{ij}}$).
-    \item Calculate deltas $\Delta_{ij}$ between contingency table and values from the previous step.
+    \item For goodness-of-fit set the probabilities, for other tests calculate expected values from the contingency table ($\widehat{p_{ij}}$).
+    \item Calculate deltas $\Delta_{ij}$ between contingency table and values from the set or calculated expected values from the previous step.
     \item Calculate the $\alpha$-quantile $\chi^2_{df,1-\alpha}$ of a central chi-square distribution.
     \item Having defined target power ($\beta$) of a test, find the noncentrality parameter ($\lambda$) of a noncentral chi-square distribution. 
     The parameter $\lambda$ is found solving following equation
@@ -248,7 +251,7 @@ procedure to retrieve the sample size is following:
 \end{enumerate}
 
 
-\subsection{Sample size for test of goodness of fit}
+\subsection{Sample size - test of goodness of fit}
 The $p_i^0$ from Equation \ref{goodness_of_fit_h_0} is defined a priori for every $i$.
 The $p_i^a$ from Equation \ref{goodness_of_fit_h_a} is defined a posteriori and is equal to the estimate $\widehat{p_{i}}$ derived from observed sample for every $i$.
 In this case the Equation \ref{goodness_of_fit_lambda} is following:
@@ -262,7 +265,7 @@ So
 \end{equation}
 
 
-\subsection{Sample size for test of independence}
+\subsection{Sample size - test of independence}
 
 Having performed steps until 5 the Equation \ref{independence_lambda} is following
 
@@ -274,7 +277,7 @@ So the sample sie $n$ is
     n = \frac{\lambda}{\left[\sum_{i=1}^{r}\sum_{j=1}^c \frac{\Delta_{ij}^2}{\widehat{p_{i\cdot}}\widehat{p_{\cdot j}}} - \sum_{i=1}^{r}\frac{\Delta_{i \cdot}^2}{\widehat{p_{i \cdot}}} - \sum_{j=1}^{c}\frac{\Delta_{\cdot j}^2}{\widehat{p_{\cdot j}}}\right]},
 \end{equation}
 
-\subsection{Sample size for test of homogeneity}
+\subsection{Sample size - test of homogeneity}
 
 Having performed steps until 5 the Equation \ref{homogeneity_lambda} is following
 
