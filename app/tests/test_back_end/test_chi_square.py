@@ -71,3 +71,30 @@ class TestFindNoncentralParam:
                                                             target_power)
 
         assert noncentral_param == 0
+
+
+class TestChiSquareTestAndSampleSize:
+
+    def test_goodness_of_fit_and_sample_size1(self):
+
+        result = chi_square.test_and_sample_size(
+            test_type='goodness-of-fit',
+            alpha=0.05,
+            target_power=0.8,
+            n_obs=[[round(10/60*3870), round(10/60*3870), round(10/60*3870),
+                    round(10/60*3870), round(11/60*3870), round(9/60*3870)]],
+            n_exp=[[round(10/60*3870), round(10/60*3870), round(10/60*3870),
+                    round(10/60*3870), round(10/60*3870), round(10/60*3870)]])
+
+        assert True
+
+    def test_goodness_of_fit_and_sample_size2(self):
+
+        result = chi_square.test_and_sample_size(
+            test_type='goodness-of-fit',
+            alpha=0.05,
+            target_power=0.8,
+            n_obs=[[10, 10, 10, 10, 11, 9]],
+            n_exp=[[10, 10, 10, 10, 10, 10]])
+
+        assert True
