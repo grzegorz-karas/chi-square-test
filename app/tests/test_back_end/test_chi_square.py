@@ -18,6 +18,7 @@ class TestChiSquareTestOutput:
             'chi2_stat': 72,
             'power': 1,
             'p_value': 1,
+            'noncentral_param': 0.36*120,
             'lambda_factor': 0.36,
 
         }
@@ -33,6 +34,7 @@ class TestChiSquareTestOutput:
             'chi2_stat': 72,
             'power': 1,
             'p_value': 0,
+            'noncentral_param': 0.36*200,
             'lambda_factor': 0.36,
         }
 
@@ -48,6 +50,7 @@ class TestChiSquareTestOutput:
             'chi2_stat': 72,
             'power': 1,
             'p_value': 0,
+            'noncentral_param': 0.36*200,
             'lambda_factor': 0.36,
         }
 
