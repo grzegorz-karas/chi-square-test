@@ -119,6 +119,7 @@ def test(test_type: str,
         'chi2_stat': chi2_stat,
         'p_value': p_value,
         'power': power,
+        'noncentral_param': noncentral_param,
         'lambda_factor': lambda_factor,
     }
     return result
