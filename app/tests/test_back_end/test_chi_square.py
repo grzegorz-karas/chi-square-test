@@ -5,7 +5,7 @@ import app.tests.test_back_end.conftest as cnft
 import app.back_end.chi_square as chi_square
 
 
-class TestChiSquareTestOutput:
+class TestChiSquareTest:
     def test_goodness_of_fit(self):
         result = chi_square.test(test_type='goodness-of-fit',
                                  alpha=0.05,
@@ -59,7 +59,7 @@ class TestChiSquareTestOutput:
 
 class TestFindNoncentralParam:
 
-    def test_find_noncentral_1(self):
+    def test_find_noncentral_0(self):
 
         cdf = 0.95
         dof = 1
@@ -73,9 +73,35 @@ class TestFindNoncentralParam:
         assert noncentral_param == 0
 
 
-class TestChiSquareTestAndSampleSize:
+class TestSampleSize:
 
-    def test_goodness_of_fit_and_sample_size1(self):
+    def test_sample_size_goodness_of_fit_perfect_match(self):
+
+        alpha = 0.05
+
+        result = chi_square.test_and_sample_size(
+            test_type='goodness-of-fit',
+            alpha=alpha,
+            target_power=0.8,
+            n_obs=[[10, 10, 10, 10, 10, 10]],
+            n_exp=[[10, 10, 10, 10, 10, 10]])
+
+        assert result['target_power_sample_size'] == 0
+
+    def test_sample_size_goodness_of_fit(self):
+
+        alpha = 0.05
+
+        result = chi_square.test_and_sample_size(
+            test_type='goodness-of-fit',
+            alpha=alpha,
+            target_power=0.8,
+            n_obs=[[10, 10, 10, 10, 11, 9]],
+            n_exp=[[10, 10, 10, 10, 10, 10]])
+
+        assert result['power'] < 2*alpha
+
+    def test_sample_size_goodness_of_fit_power_equal_target(self):
 
         result = chi_square.test_and_sample_size(
             test_type='goodness-of-fit',
@@ -86,15 +112,41 @@ class TestChiSquareTestAndSampleSize:
             n_exp=[[round(10/60*3870), round(10/60*3870), round(10/60*3870),
                     round(10/60*3870), round(10/60*3870), round(10/60*3870)]])
 
-        assert True
+        assert result['target_power'] < result['power']
 
-    def test_goodness_of_fit_and_sample_size2(self):
+    def test_sample_size_independence(self):
+
+        alpha = 0.05
 
         result = chi_square.test_and_sample_size(
-            test_type='goodness-of-fit',
+            test_type='independence',
+            alpha=alpha,
+            target_power=0.8,
+            n_obs=[[10, 10, 10, 10, 11, 9],
+                   [10, 10, 10, 10, 10, 10]])
+
+        assert result['power'] < 2*alpha
+
+    def test_sample_size_independence_power_equal_target(self):
+
+        result = chi_square.test_and_sample_size(
+            test_type='independence',
             alpha=0.05,
             target_power=0.8,
-            n_obs=[[10, 10, 10, 10, 11, 9]],
-            n_exp=[[10, 10, 10, 10, 10, 10]])
+            n_obs=[[round(10/60*5748), round(11/60*5748), round(9/60*5748)],
+                   [round(10/60*5748), round(10/60*5748), round(10/60*5748)]])
 
-        assert True
+        assert result['target_power'] < result['power']
+
+    def test_sample_size_independence_perfect_match(self):
+
+        alpha = 0.05
+
+        result = chi_square.test_and_sample_size(
+            test_type='independence',
+            alpha=alpha,
+            target_power=0.8,
+            n_obs=[[10, 10, 10, 10, 10, 10],
+                   [10, 10, 10, 10, 10, 10]])
+
+        assert result['target_power_sample_size'] == 0

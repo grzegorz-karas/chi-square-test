@@ -128,7 +128,7 @@ def test(test_type: str,
 def find_noncentral_param(dof, qchi2, target_power):
 
     noncentral_param = 0
-    step = 0.1
+    step = 0.01
     power = 0
 
     while True:
@@ -146,8 +146,35 @@ def sample_size(dof: int,
                 target_power: float
                 ) -> int:
 
+    if lambda_factor == 0:
+        return 0
+
     noncentral_param = find_noncentral_param(dof, qchi2, target_power)
 
-    n = ceil(lambda_factor / noncentral_param)
+    n = ceil(noncentral_param / lambda_factor)
 
     return n
+
+
+def test_and_sample_size(test_type: str,
+                         alpha: float,
+                         target_power: float,
+                         n_obs: Matrix,
+                         n_exp: Optional[Matrix] = None
+                         ) -> Dict:
+
+    test_output = test(test_type, alpha, n_obs, n_exp)
+
+    target_power_sample_size = sample_size(
+        dof=test_output["dof"],
+        lambda_factor=test_output["lambda_factor"],
+        qchi2=test_output["qchi2"],
+        target_power=target_power
+    )
+
+    test_output.update({
+        "target_power": target_power,
+        "target_power_sample_size": target_power_sample_size
+    })
+
+    return test_output
