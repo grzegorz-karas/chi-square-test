@@ -108,7 +108,7 @@ def test(test_type: str,
 
     noncentral_param = n * lambda_factor
 
-    if noncentral_param >= 0:
+    if noncentral_param > 0:
         power = 1 - cdf(qchi2, dof, noncentral_param)
     else:
         power = None
@@ -165,12 +165,15 @@ def test_and_sample_size(test_type: str,
 
     test_output = test(test_type, alpha, n_obs, n_exp)
 
-    target_power_sample_size = sample_size(
-        dof=test_output["dof"],
-        lambda_factor=test_output["lambda_factor"],
-        qchi2=test_output["qchi2"],
-        target_power=target_power
-    )
+    if test_output['noncentral_param'] > 0:
+        target_power_sample_size = sample_size(
+            dof=test_output["dof"],
+            lambda_factor=test_output["lambda_factor"],
+            qchi2=test_output["qchi2"],
+            target_power=target_power
+        )
+    else:
+        target_power_sample_size = None
 
     test_output.update({
         "target_power": target_power,

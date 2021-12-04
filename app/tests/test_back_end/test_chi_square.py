@@ -86,7 +86,7 @@ class TestSampleSize:
             n_obs=[[10, 10, 10, 10, 10, 10]],
             n_exp=[[10, 10, 10, 10, 10, 10]])
 
-        assert result['target_power_sample_size'] == 0
+        assert result['target_power_sample_size'] == None
 
     def test_sample_size_goodness_of_fit(self):
 
@@ -149,4 +149,4 @@ class TestSampleSize:
             n_obs=[[10, 10, 10, 10, 10, 10],
                    [10, 10, 10, 10, 10, 10]])
 
-        assert result['target_power_sample_size'] == 0
+        assert result['target_power_sample_size'] == None
