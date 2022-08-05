@@ -22,6 +22,8 @@ The module [chi_square.py](app/back_end/chi_sqaure.py) consist of functions that
 4. Calculate sample size for given target power.
 5. Perform the $\chi^2$ test and calculate the sample size for given target power.
 
+Please see the [test folder](app/tests/test_back_end/test_chi_square.py) for checking how the functions shall be called.
+
 # Disclaimer
 
 Code was written on the basis of the following article 
